@@ -1,0 +1,6 @@
+# Repository classes mediates between the data source layer and the business layers of the application.
+
+class Repository_NAMERepository:
+    pass
+
+

@@ -1,0 +1,6 @@
+# Service classes store business logic.
+
+class Service_NAMEService:
+    pass
+
+

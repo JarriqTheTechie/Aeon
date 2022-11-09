@@ -1,0 +1,6 @@
+flask
+masonite-orm
+inflection
+mv-components
+masonite-validation
+pywin32
