@@ -1,17 +1,19 @@
-import glob
-from flask import Flask
+from flask import Flask, request
 from mv_components import MVComponent
 from packages.Commands import Commands
-
+from packages.Router import Router
 
 app = Flask(__name__)
 Commands(app) # Loads a series of commands.
 MVComponent(app) # Loads mv-components.
 
 
-@app.route('/')
-def hello_world():  # put application's code here
-    return 'Hello World!'
+
+@app.errorhandler(404)
+def page_handler(e):
+    return Router().launch()
+
+
 
 
 if __name__ == '__main__':
