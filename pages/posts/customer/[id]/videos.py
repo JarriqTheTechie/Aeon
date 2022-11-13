@@ -1,6 +1,6 @@
 endpoint = "videos"
 def default(id):
-    # language=HTML prefix=<body> suffix=</body>
+    # language=HTML
     string = f"""
         <b>Browsing videos for customer {id}</b>
     """

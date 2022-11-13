@@ -14,7 +14,7 @@ MVComponent(app) # Loads mv-components.
 
 
 
-pprint.pprint(FileBasedRouter().routes_export())
+#pprint.pprint(FileBasedRouter().routes_export())
 
 
 

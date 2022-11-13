@@ -41,19 +41,19 @@ class FileBasedRouter:
 
     def find_routes_files(self):
         self.possible_routes = []
-        for root, dirnames, filenames in os.walk(r'application/pages'):
+        for root, dirnames, filenames in os.walk('pages'):
             for filename in fnmatch.filter(filenames, '*.py'):
                 if filename is None:
                     pass
                 else:
                     self.possible_routes.append(
-                        os.path.join(root, filename).lstrip("application/pages").lstrip("\\").replace("\\", "."))
+                        os.path.join(root, filename).lstrip("pages").lstrip("\\").replace("\\", "."))
         return self
 
     def generate_fqns(self):
         self.fqdns = []
         for route in self.possible_routes:
-            fqdn = f"application.pages.{route.rstrip('.py')}.default"
+            fqdn = f"pages.{route.rstrip('.py')}.default"
             self.fqdns.append(fqdn)
         return self
 
@@ -63,7 +63,7 @@ class FileBasedRouter:
         for path in self.fqdns:
             fqdn = path
             path = path.replace("default", "")
-            path = path.replace("application.pages.", "/")
+            path = path.replace("pages.", "/")
             path = path.replace(".", "/")
 
             path = path.replace("index/", "")
