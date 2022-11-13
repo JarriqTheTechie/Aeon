@@ -2,7 +2,7 @@ import pprint
 import random
 import secrets
 
-from flask import Flask, request
+from flask import Flask, request, redirect, url_for
 from mv_components import MVComponent
 from packages.Commands import Commands
 from packages.FileBasedRouter import FileBasedRouter
@@ -13,7 +13,8 @@ Commands(app) # Loads a series of commands.
 MVComponent(app) # Loads mv-components.
 
 
-#pprint.pprint(FileBasedRouter().routes_export(), depth=50, sort_dicts=True, indent=4, compact=True)
+
+pprint.pprint(FileBasedRouter().routes_export())
 
 
 

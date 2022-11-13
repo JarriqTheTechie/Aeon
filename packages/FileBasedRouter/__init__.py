@@ -8,7 +8,6 @@ import re
 from flask import request
 
 
-
 def to_class(path: str) -> Any:
     """
         Converts string class path to a python class
@@ -30,8 +29,15 @@ class FileBasedRouter:
 
     def init_app(self, app):
         for route in FileBasedRouter().routes_export():
-            app.add_url_rule(route.get('path'), view_func=route.get('view_func'), endpoint=route.get('endpoint'),
-                             methods=[route.get('method')])
+            app.add_url_rule(
+                route.get('path'),
+                **dict(
+                    view_func=route.get('view_func'),
+                    endpoint=route.get('endpoint'),
+                    methods=[route.get('method')],
+                    websocket=route.get("ws")
+                )
+            )
 
     def find_routes_files(self):
         self.possible_routes = []
@@ -40,14 +46,17 @@ class FileBasedRouter:
                 if filename is None:
                     pass
                 else:
-                    self.possible_routes.append(os.path.join(root, filename).lstrip("application/pages").lstrip("\\").replace("\\", "."))
+                    self.possible_routes.append(
+                        os.path.join(root, filename).lstrip("application/pages").lstrip("\\").replace("\\", "."))
         return self
+
     def generate_fqns(self):
         self.fqdns = []
         for route in self.possible_routes:
             fqdn = f"application.pages.{route.rstrip('.py')}.default"
             self.fqdns.append(fqdn)
         return self
+
     def fqdns_to_route_path(self):
         self.route_paths = []
         self.route_map = []
@@ -71,12 +80,13 @@ class FileBasedRouter:
                 path = path.rstrip("/")
             self.route_map.append({
                 "path": path,
+                "fqdn": fqdn,
                 "view_func": to_class(fqdn),
-                "endpoint": secrets.token_urlsafe(8),
-                "method": method
+                "endpoint": to_class(fqdn.replace("default", "endpoint")) or secrets.token_urlsafe(8),
+                "method": method,
+                "ws": to_class(fqdn.replace("default", "ws")) or False
             })
         return self
 
     def routes_export(self):
         return self.find_routes_files().generate_fqns().fqdns_to_route_path().route_map
-
