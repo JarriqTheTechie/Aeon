@@ -4,3 +4,4 @@ inflection
 mv-components
 masonite-validation
 pywin32
+dpath

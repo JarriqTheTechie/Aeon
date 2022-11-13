@@ -1,17 +1,21 @@
-import glob
-from flask import Flask
+import pprint
+import random
+import secrets
+
+from flask import Flask, request
 from mv_components import MVComponent
 from packages.Commands import Commands
-
+from packages.FileBasedRouter import FileBasedRouter
 
 app = Flask(__name__)
+FileBasedRouter(app)
 Commands(app) # Loads a series of commands.
 MVComponent(app) # Loads mv-components.
 
 
-@app.route('/')
-def hello_world():  # put application's code here
-    return 'Hello World!'
+#pprint.pprint(FileBasedRouter().routes_export(), depth=50, sort_dicts=True, indent=4, compact=True)
+
+
 
 
 if __name__ == '__main__':
