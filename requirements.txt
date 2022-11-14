@@ -4,4 +4,6 @@ inflection
 mv-components
 masonite-validation
 pywin32
-dpath
+jinja2-simple-tags
+
+

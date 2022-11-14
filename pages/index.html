@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+
+
+
+{% auth(["Director"]) %}
+    ONLY DIRECTOR SHOULD SEE THIS
+{% endauth %}
+
+
+{% guest() %}
+    ONLY GUEST SHOULD SEE THIS
+{% endguest %}
+
+{% production() %}
+    Im in production
+{% else %}
+    Im in dev
+{% endproduction %}
+</body>
+</html>
