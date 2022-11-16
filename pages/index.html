@@ -3,20 +3,4 @@
 
 
 
-    {% auth(["Director"]) %}
-        ONLY DIRECTOR SHOULD SEE THIS
-    {% endauth %}
-
-
-    {% guest() %}
-        ONLY GUEST SHOULD SEE THIS
-
-        {{ config("auth", "LOGIN_URL") }}
-    {% endguest %}
-
-    {% production() %}
-        Im in production
-    {% endproduction %}
-
-
 {% endblock %}
