@@ -15,12 +15,12 @@
 
 {% guest() %}
     ONLY GUEST SHOULD SEE THIS
+
+    {{ config("auth", "LOGIN_URL") }}
 {% endguest %}
 
 {% production() %}
     Im in production
-{% else %}
-    Im in dev
 {% endproduction %}
 </body>
 </html>

@@ -3,7 +3,7 @@ from flask import session
 
 import config.aeon
 from application.interfaces.ActionInterface import ActionInterface
-from packages.ad_authenticator.Impersonate import Impersonate
+from packages.ADAuthenticator.Impersonate import Impersonate
 
 
 class CreateSessionAction(ActionInterface):

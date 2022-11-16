@@ -15,6 +15,7 @@ class ADAuthAction(ActionInterface):
     def handle(self, data: dict) -> bool:
         username = data.get("username").lower()
         domain = config.aeon.config.get('auth').get("DOMAIN")
+        print(domain)
         token = win32security.LogonUser(
             username,
             domain,

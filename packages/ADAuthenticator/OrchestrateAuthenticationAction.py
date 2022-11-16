@@ -2,8 +2,8 @@ from flask import redirect, url_for
 
 import config.aeon
 from application.interfaces.ActionInterface import ActionInterface
-from packages.ad_authenticator.ADAuthAction import ADAuthAction
-from packages.ad_authenticator.CreateSessionAction import CreateSessionAction
+from packages.ADAuthenticator.ADAuthAction import ADAuthAction
+from packages.ADAuthenticator.CreateSessionAction import CreateSessionAction
 
 
 class OrchestrateAuthenticationAction(ActionInterface):

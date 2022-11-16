@@ -1,7 +1,7 @@
 from functools import wraps
 from flask import request, redirect, url_for, session, abort
 import config.aeon
-from packages.ad_authenticator.OrchestrateAuthenticationAction import OrchestrateAuthenticationAction
+from packages.ADAuthenticator.OrchestrateAuthenticationAction import OrchestrateAuthenticationAction
 
 
 class ADAuthenticator:

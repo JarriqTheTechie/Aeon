@@ -1,21 +1,12 @@
 from flask import Flask, session
-from mv_components import MVComponent
+from packages.AEON import AEON
 
-from packages.ad_authenticator import ADAuthenticator
-from packages.Commands import Commands
-from packages.FileBasedRouter import FileBasedRouter
 
 app = Flask(__name__, template_folder='pages')
-app.secret_key = "dfadfad"
-FileBasedRouter(app)
-Commands(app) # Loads a series of commands.
-MVComponent(app) # Loads mv-components.
-ADAuthenticator(app)
+AEON(app)
 
-app.jinja_env.add_extension('packages.JinjaDirectives.UnlessDirective')
-app.jinja_env.add_extension('packages.JinjaDirectives.AuthDirective')
-app.jinja_env.add_extension('packages.JinjaDirectives.GuestDirective')
-app.jinja_env.add_extension('packages.JinjaDirectives.ProductionDirective')
+
+
 
 @app.before_request
 def rf():

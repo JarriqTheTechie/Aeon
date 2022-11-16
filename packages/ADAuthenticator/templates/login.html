@@ -1,10 +1,10 @@
 {% extends 'auth-base.html' %}
-{% block title %}Login{% endblock %}
+{% block title %}{% endblock %}
 {% block auth_container %}
 
     <div class="p-3 bg-white">
         <h5 class="mb-0">
-            <img src="/static/logo.png" alt="" style="max-height: 32px">
+            <img src="{{ config("app", "LOGO_PATH") }}" alt="" style="max-height: 32px">
         </h5>
     </div>
 
@@ -13,14 +13,14 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center mb-5">
                     <h2 class="heading-section">
-                        <img src="/static/logo.png" alt="" style="max-height: 42px">
+                        <img src="{{ config("app", "LOGO_PATH") }}" alt="" style="max-height: 42px">
                     </h2>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-12 col-lg-10">
                     <div class="d-md-flex" style="justify-content: center">
-                        <div class="login-wrap p-4 p-lg-5 shadow-lg rounded">
+                        <div class="login-wrap p-4 p-lg-5 rounded">
                             <div class="d-flex">
                                 <div class="w-100">
                                     <h3 class="mb-4 ">Sign In</h3>
@@ -39,12 +39,12 @@
                             <form action="{{ url_for('do_login') }}" class="signin-form" method="post">
                                 <div class="form-group mb-3">
                                     <label class="label " for="name">Username</label>
-                                    <input type="text" class="form-control" name="username" placeholder="Username"
+                                    <input type="text" class="form-control rounded-0" name="username" placeholder="Username" autocomplete="off"
                                            required>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="label " for="password">Password</label>
-                                    <input type="password" class="form-control" name="password" placeholder="Password"
+                                    <input type="password" class="form-control rounded-0" name="password" placeholder="Password"
                                            required>
                                 </div>
                                 {% if error %}
@@ -82,7 +82,7 @@
                                     </div>
                                 {% endif %}
                                 <div class="form-group">
-                                    <button type="submit" class="form-control btn btn-primary submit px-3">Sign In
+                                    <button type="submit" class="form-control btn btn-primary submit px-3 rounded-0">Sign In
                                     </button>
                                 </div>
                             </form>
