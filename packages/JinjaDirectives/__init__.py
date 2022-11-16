@@ -48,7 +48,7 @@ class GuestDirective(ContainerTag):
 
 
 class ProductionDirective(ContainerTag):
-    tags = {"else","production"}
+    tags = {"production"}
 
     def render(self, environment, caller=None):
         from flask import Flask, current_app
