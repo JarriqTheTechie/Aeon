@@ -1,3 +1,4 @@
+import jinja2
 from mv_components import MVComponent
 
 from config.aeon import config as _config
@@ -23,6 +24,7 @@ class AEON:
         app.jinja_env.add_extension('packages.JinjaDirectives.AuthDirective')
         app.jinja_env.add_extension('packages.JinjaDirectives.GuestDirective')
         app.jinja_env.add_extension('packages.JinjaDirectives.ProductionDirective')
+        app.jinja_env.line_statement_prefix = "@"
 
         @app.template_global()
         def config(category, key):
