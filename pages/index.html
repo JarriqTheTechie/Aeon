@@ -1,26 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
 
 
 
-{% auth(["Director"]) %}
-    ONLY DIRECTOR SHOULD SEE THIS
-{% endauth %}
+    {% auth(["Director"]) %}
+        ONLY DIRECTOR SHOULD SEE THIS
+    {% endauth %}
 
 
-{% guest() %}
-    ONLY GUEST SHOULD SEE THIS
+    {% guest() %}
+        ONLY GUEST SHOULD SEE THIS
 
-    {{ config("auth", "LOGIN_URL") }}
-{% endguest %}
+        {{ config("auth", "LOGIN_URL") }}
+    {% endguest %}
 
-{% production() %}
-    Im in production
-{% endproduction %}
-</body>
-</html>
+    {% production() %}
+        Im in production
+    {% endproduction %}
+
+
+{% endblock %}

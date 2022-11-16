@@ -1,0 +1,22 @@
+{% for resource in notification.where("user_id", session['user_id']).where_null("read").all() %}
+    {% set mark_as_read = notification.where("user_id", session['user_id']).where_null("read").update({"read": "yes"}) %}
+    <script>
+        new Notify({
+            status: 'info',
+            title: '{{ resource.data.title|safe }}',
+            text: '<b>{{ resource.data.body|safe }}</b>',
+            effect: 'slide',
+            speed: 300,
+            customClass: null,
+            customIcon: null,
+            showIcon: true,
+            showCloseButton: true,
+            autoclose: false,
+            autotimeout: 6000,
+            gap: 20,
+            distance: 20,
+            type: 3,
+            position: 'right bottom'
+        })
+    </script>
+{% endfor %}

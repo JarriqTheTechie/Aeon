@@ -1,0 +1,2 @@
+class ToastNotificationJSCSS:
+    pass
